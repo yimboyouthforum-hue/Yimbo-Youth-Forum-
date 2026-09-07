@@ -1106,11 +1106,26 @@
   document.querySelectorAll('.navlinks a').forEach(function(a){
     a.addEventListener('click', function(){ document.getElementById('navLinks').classList.remove('open'); });
   });
+document.getElementById('memberForm').addEventListener('submit', function(e){
+  e.preventDefault();
+
+  if(!confirm("Proceed to pay KES 100 membership fee?")){
+      return;
+  }
+
   document.getElementById('memberForm').addEventListener('submit', function(e){
-    e.preventDefault();
-    document.getElementById('formMsg').style.display = 'block';
-    this.reset();
-  });
+  e.preventDefault();
+
+  if(!confirm("Proceed to pay KES 100 membership fee?")){
+      return;
+  }
+
+  document.getElementById('formMsg').style.display = 'block';
+  document.getElementById('formMsg').innerHTML =
+      'Please complete payment of KES 100 via M-PESA.';
+
+  this.reset();
+});
 </script>
 
 </body>
