@@ -1,0 +1,1110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yimbo Youth Forum — Unity • Empowerment • Development</title> 
+<link rel="icon" href="assets/logo.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --forest:#0D1626;
+    --forest-deep:#060B14;
+    --gold:#3B82F6;
+    --gold-soft:#7FB2FF;
+    --clay:#5B6B8C;
+    --paper:#0B1220;
+    --sage:#111F36;
+    --ink:#EAF0FB;
+    --cream:#F5F8FF;
+    --line: rgba(255,255,255,0.10);
+    --line-dark: rgba(255,255,255,0.14);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Work Sans', sans-serif;
+    font-size:16px;
+    line-height:1.6;
+  }
+  h1,h2,h3,h4{
+    font-family:'Poppins', sans-serif;
+    margin:0;
+    font-weight:700;
+    letter-spacing:-0.01em;
+  }
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 28px;}
+  section{padding:88px 0;}
+  @media (max-width:640px){ section{padding:56px 0;} }
+
+  /* ---------- pattern divider ---------- */
+  .divider{
+    height:14px;
+    background-image: repeating-linear-gradient(115deg, var(--gold) 0 3px, transparent 3px 22px),
+                       repeating-linear-gradient(65deg, var(--clay) 0 3px, transparent 3px 22px);
+    background-position: 0 0, 0 7px;
+    background-size: 100% 7px;
+    opacity:0.9;
+  }
+
+  /* ---------- header ---------- */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:var(--forest);
+    border-bottom:1px solid var(--line-dark);
+  }
+  .nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:18px 28px; max-width:1120px; margin:0 auto;
+  }
+  .brand{display:flex; flex-direction:row; align-items:center; gap:12px; color:var(--cream);}
+  .brand strong{font-family:'Poppins',sans-serif; font-size:1.28rem; font-weight:700; letter-spacing:0.01em;}
+  .brand span{font-size:0.72rem; color:var(--gold-soft); margin-top:2px;}
+  .navlinks{display:flex; gap:28px; align-items:center;}
+  .navlinks a{color:var(--cream); font-size:0.95rem; opacity:0.88;}
+  .navlinks a:hover{opacity:1; color:var(--gold-soft);}
+  .btn{
+    display:inline-block; padding:13px 28px; border-radius:999px;
+    font-weight:700; font-size:0.92rem; white-space:nowrap; font-family:'Poppins',sans-serif;
+  }
+  .btn-gold{background:var(--gold); color:#04101F;}
+  .btn-gold:hover{background:var(--gold-soft);}
+  .btn-outline{border:1.5px solid var(--line-dark); color:var(--cream);}
+  .btn-outline:hover{border-color:var(--gold-soft); color:var(--gold-soft);}
+  .btn-outline-dark{border:1.5px solid var(--line); color:var(--ink);}
+  .btn-outline-dark:hover{border-color:var(--gold); color:var(--gold-soft);}
+  .navcta{display:none;}
+  @media (min-width:860px){ .navcta{display:inline-block;} }
+  .menutoggle{
+    display:inline-block; background:none; border:1px solid var(--line-dark);
+    color:var(--cream); padding:8px 12px; font-size:1rem; cursor:pointer;
+  }
+  @media (min-width:860px){ .menutoggle{display:none;} .navlinks{display:flex;} }
+  @media (max-width:859px){
+    .navlinks{
+      position:absolute; top:100%; left:0; right:0; background:var(--forest);
+      flex-direction:column; align-items:flex-start; padding:8px 28px 22px;
+      display:none; gap:14px; border-bottom:1px solid var(--line-dark);
+    }
+    .navlinks.open{display:flex;}
+  }
+
+  /* ---------- hero ---------- */
+  .hero{
+    background:var(--forest);
+    color:var(--cream);
+    position:relative;
+    overflow:hidden;
+    padding:96px 0 72px;
+  }
+  .hero::before{
+    content:"";
+    position:absolute; inset:0;
+    background-image:
+      radial-gradient(circle at 15% 20%, rgba(59,130,246,0.10) 0, transparent 45%),
+      radial-gradient(circle at 85% 75%, rgba(168,70,31,0.12) 0, transparent 50%);
+    pointer-events:none;
+  }
+  .hero-inner{position:relative; max-width:680px;}
+  .eyebrow{
+    color:var(--gold); font-size:0.9rem; font-weight:700; font-family:'Poppins',sans-serif;
+    text-transform:uppercase; letter-spacing:0.06em; margin-bottom:20px; max-width:460px;
+  }
+  .hero h1{font-size:clamp(2.4rem, 6vw, 3.9rem); font-weight:800; line-height:1.08; margin-bottom:22px;}
+  .hero h1 .accent{color:var(--gold);}
+  .hero p.lead{font-size:1.15rem; color:rgba(251,247,236,0.86); max-width:540px; margin-bottom:34px;}
+  .hero-ctas{display:flex; gap:16px; flex-wrap:wrap; margin-bottom:56px;}
+  .stat-strip{display:flex; flex-wrap:wrap; gap:0; border-top:1px solid var(--line-dark);}
+  .stat{padding:20px 32px 0 0; margin-right:32px; border-right:1px solid var(--line-dark); padding-top:20px;}
+  .stat:last-child{border-right:none;}
+  .stat span{display:block; font-size:0.85rem; color:rgba(251,247,236,0.68);}
+
+  /* ---------- section heading pattern ---------- */
+  .kicker{
+    color:var(--gold); font-family:'Poppins',sans-serif; font-weight:700; text-transform:uppercase;
+    letter-spacing:0.06em; font-size:0.85rem; margin-bottom:10px;
+  }
+  .sechead{max-width:640px; margin-bottom:44px;}
+  .sechead h2{font-size:clamp(1.7rem,3.4vw,2.3rem);}
+  .sechead p{margin-top:14px; color:rgba(234,240,251,0.72); font-size:1.05rem;}
+  .sechead.on-dark p{color:rgba(251,247,236,0.78);}
+  .sechead.on-dark h2{color:var(--cream);}
+  .sechead.on-dark .kicker{color:var(--gold-soft);}
+
+  /* ---------- about ---------- */
+  #about{background:var(--paper);}
+  .about-grid{display:grid; grid-template-columns:1fr; gap:48px;}
+  @media (min-width:820px){ .about-grid{grid-template-columns:0.9fr 1.1fr;} }
+  .about-lead{border-left:3px solid var(--gold); padding-left:24px;}
+  .about-lead p{font-size:1.08rem; color:rgba(234,240,251,0.82);}
+  .vmv{display:flex; flex-direction:column; gap:26px;}
+  .vmv-item h4{font-size:1.05rem; color:var(--gold); margin-bottom:6px;}
+  .vmv-item p{color:rgba(234,240,251,0.72); font-size:0.98rem;}
+  .values-row{display:flex; flex-wrap:wrap; gap:10px; margin-top:6px;}
+  .value-chip{
+    font-size:0.85rem; padding:6px 14px; border:1px solid var(--line);
+    color:var(--ink); border-radius:999px;
+  }
+
+  /* ---------- what we do ---------- */
+  #whatwedo{background:var(--forest); color:var(--cream);}
+  .wwd-list{display:grid; grid-template-columns:1fr; gap:0; border-top:1px solid var(--line-dark);}
+  @media (min-width:760px){ .wwd-list{grid-template-columns:1fr 1fr;} }
+  .wwd-item{
+    padding:26px 22px 26px 22px; border-bottom:1px solid var(--line-dark);
+    border-left:3px solid transparent;
+  }
+  @media (min-width:760px){ .wwd-item:nth-child(odd){border-right:1px solid var(--line-dark);} }
+  .wwd-item h4{font-size:1.08rem; margin-bottom:8px; color:var(--cream);}
+  .wwd-item p{font-size:0.94rem; color:rgba(251,247,236,0.72); margin:0;}
+  .wwd-item:nth-child(4n+1){border-left-color:var(--gold);}
+  .wwd-item:nth-child(4n+2){border-left-color:var(--clay);}
+  .wwd-item:nth-child(4n+3){border-left-color:var(--gold-soft);}
+  .wwd-item:nth-child(4n+4){border-left-color:#4C6580;}
+
+  /* ---------- leadership ---------- */
+  #leadership{background:var(--sage);}
+  .lead-group-title{font-family:'Poppins',sans-serif; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; font-size:0.9rem; color:var(--gold); margin:0 0 22px;}
+  .lead-grid{display:grid; grid-template-columns:1fr; gap:28px; margin-bottom:52px;}
+  @media (min-width:640px){ .lead-grid{grid-template-columns:1fr 1fr;} }
+  @media (min-width:960px){ .lead-grid{grid-template-columns:1fr 1fr 1fr;} }
+  .lead-card{display:flex; flex-direction:column; gap:14px; align-items:stretch; border:1px solid var(--line); padding:16px; border-radius:14px; background:rgba(255,255,255,0.02);}
+  .lead-photo{width:100%; height:230px; border-radius:12px; object-fit:cover; flex-shrink:0; border:2px solid rgba(59,130,246,0.35); background:var(--forest-deep);}
+  .lead-photo-ph{width:100%; height:230px; border-radius:12px; flex-shrink:0; display:flex; align-items:center; justify-content:center; font-family:'Poppins',sans-serif; font-size:1.3rem; color:var(--cream); background:var(--forest-deep); border:2px solid rgba(59,130,246,0.25);}
+
+  .lead-name{font-size:1.03rem; color:var(--ink); margin-bottom:2px;}
+  .lead-role{font-size:0.85rem; color:#4D9CFF; font-weight:700; margin-bottom:8px;}
+  .lead-bio{font-size:0.88rem; color:rgba(234,240,251,0.68); line-height:1.55;}
+
+  /* ---------- programs ---------- */
+  #programs{background:var(--paper);}
+  .program-tags{display:flex; flex-wrap:wrap; gap:14px;}
+  .program-tag{
+    padding:14px 24px; border:1px solid var(--line); border-radius:999px; font-size:0.95rem;
+    font-family:'Poppins',sans-serif; font-weight:600; color:var(--ink);
+  }
+  .program-tag:nth-child(3n+1){border-color:var(--gold);}
+  .program-tag:nth-child(3n+2){border-color:var(--clay);}
+  .program-flow{margin-top:38px; display:flex; flex-wrap:wrap; gap:8px; align-items:center; font-size:0.92rem; color:rgba(234,240,251,0.6);}
+  .program-flow .arrow{color:var(--gold);}
+
+  /* ---------- projects ---------- */
+  #projects{background:var(--forest); color:var(--cream);}
+  .project-feature{
+    display:grid; grid-template-columns:1fr; gap:0; border:1px solid var(--line-dark);
+  }
+  @media (min-width:760px){ .project-feature{grid-template-columns:1fr 1.2fr;} }
+  .project-visual{
+    min-height:220px;
+    background:
+      repeating-linear-gradient(135deg, rgba(59,130,246,0.18) 0 18px, rgba(59,130,246,0.05) 18px 36px),
+      var(--forest-deep);
+    display:flex; align-items:flex-end; padding:22px;
+  }
+  .status-pill{background:var(--gold); color:var(--forest-deep); font-size:0.78rem; font-weight:700; padding:5px 12px;}
+  .project-body{padding:32px;}
+  .project-body h3{font-size:1.5rem; color:var(--cream); margin-bottom:14px;}
+  .project-meta{display:flex; gap:22px; flex-wrap:wrap; margin-bottom:16px; font-size:0.88rem; color:var(--gold-soft);}
+  .project-body p.desc{color:rgba(251,247,236,0.78); margin-bottom:22px;}
+
+  /* ---------- opportunities ---------- */
+  #opportunities{background:var(--paper);}
+  .opp-cats{display:flex; flex-wrap:wrap; gap:10px; margin-bottom:36px;}
+  .opp-cat{font-size:0.86rem; padding:8px 16px; background:var(--sage); color:var(--ink); border-radius:999px;}
+  .opp-listing{
+    display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:20px;
+    border:1px solid var(--line); padding:26px; gap:24px;
+  }
+  .opp-listing h4{font-size:1.15rem; margin-bottom:8px;}
+  .opp-listing .meta{font-size:0.9rem; color:rgba(234,240,251,0.62);}
+
+  /* ---------- events ---------- */
+  #events{background:var(--sage);}
+  .event-feature{display:flex; gap:26px; border:1px solid var(--line); padding:0; flex-wrap:wrap;}
+  .date-badge{
+    background:var(--clay); color:var(--cream); text-align:center; padding:22px 26px;
+    font-family:'Poppins',sans-serif; min-width:110px;
+  }
+  .date-badge .day{font-size:2.1rem; line-height:1; font-weight:700;}
+  .date-badge .mon{font-size:0.85rem; letter-spacing:0.04em; margin-top:4px;}
+  .event-body{padding:24px 26px 24px 0; flex:1; min-width:240px;}
+  .event-body h3{font-size:1.3rem; margin-bottom:10px;}
+  .event-meta{font-size:0.9rem; color:var(--gold-soft); margin-bottom:12px;}
+  .event-body p{color:rgba(234,240,251,0.7); margin-bottom:18px; font-size:0.96rem;}
+  .past-note{margin-top:26px; font-size:0.92rem; color:rgba(234,240,251,0.6); font-style:italic;}
+
+  /* ---------- news ---------- */
+  #news{background:var(--paper);}
+  .news-feature{display:grid; grid-template-columns:1fr; gap:0; border:1px solid var(--line);}
+  @media (min-width:700px){ .news-feature{grid-template-columns:1fr 1.3fr;} }
+  .news-visual{
+    min-height:180px;
+    background: linear-gradient(160deg, var(--sage), var(--forest-deep));
+  }
+  .news-body{padding:30px;}
+  .news-date{font-size:0.85rem; color:var(--clay); margin-bottom:10px;}
+  .news-body h3{font-size:1.3rem; margin-bottom:14px;}
+  .read-more{color:var(--gold); font-weight:600; font-size:0.94rem; border-bottom:1.5px solid var(--gold);}
+
+  /* ---------- get involved ---------- */
+  #involved{background:var(--forest); color:var(--cream);}
+  .engage-grid{display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:56px;}
+  @media (min-width:640px){ .engage-grid{grid-template-columns:repeat(4,1fr);} }
+  .engage-btn{
+    border:1px solid var(--line-dark); padding:22px 18px; text-align:left; font-size:0.95rem; font-weight:600;
+  }
+  .engage-btn:hover{border-color:var(--gold);}
+  .form-panel{background:rgba(251,247,236,0.04); border:1px solid var(--line-dark); padding:36px;}
+  .form-panel h3{color:var(--cream); font-size:1.3rem; margin-bottom:6px;}
+  .form-panel > p{color:rgba(251,247,236,0.65); font-size:0.92rem; margin-bottom:26px;}
+  .form-grid{display:grid; grid-template-columns:1fr; gap:18px;}
+  @media (min-width:640px){ .form-grid{grid-template-columns:1fr 1fr;} }
+  .field label{display:block; font-size:0.82rem; color:var(--gold-soft); margin-bottom:6px;}
+  .field input, .field select{
+    width:100%; background:transparent; border:none; border-bottom:1px solid var(--line-dark);
+    color:var(--cream); padding:9px 2px; font-family:inherit; font-size:0.95rem;
+  }
+  .field input::placeholder{color:rgba(251,247,236,0.35);}
+  .field input:focus, .field select:focus{outline:none; border-bottom-color:var(--gold);}
+  .field select option{color:var(--ink);}
+  .interests{grid-column:1 / -1;}
+  .interests .opts{display:flex; flex-wrap:wrap; gap:10px 20px; margin-top:8px;}
+  .interests label{display:flex; align-items:center; gap:8px; font-size:0.88rem; color:rgba(251,247,236,0.85);}
+  .form-submit{grid-column:1/-1; margin-top:8px;}
+  #formMsg{font-size:0.92rem; color:var(--gold-soft); margin-top:14px; display:none;}
+
+  /* ---------- support/partners ---------- */
+  #support{background:var(--paper);}
+  .support-grid{display:grid; grid-template-columns:1fr; gap:44px;}
+  @media (min-width:820px){ .support-grid{grid-template-columns:1fr 1fr;} }
+  .support-grid h3{font-size:1.15rem; color:var(--gold); margin-bottom:14px;}
+  .support-grid p{color:rgba(234,240,251,0.7); font-size:0.96rem;}
+  .tier-list{margin-top:16px; display:flex; flex-direction:column; gap:0;}
+  .tier-list div{padding:12px 0; border-bottom:1px solid var(--line); font-size:0.95rem;}
+
+  /* ---------- footer ---------- */
+  footer{background:var(--forest-deep); color:rgba(251,247,236,0.75); padding:64px 0 28px;}
+  .foot-grid{display:grid; grid-template-columns:1fr; gap:40px;}
+  @media (min-width:760px){ .foot-grid{grid-template-columns:1.3fr 1fr 1fr;} }
+  .foot-brand strong{color:var(--cream); font-family:'Poppins',sans-serif; font-size:1.2rem;}
+  .foot-brand p{margin-top:12px; font-size:0.9rem; max-width:320px;}
+  footer h5{color:var(--gold-soft); font-size:0.85rem; letter-spacing:0.02em; margin-bottom:16px; font-weight:600;}
+  footer ul{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:10px; font-size:0.9rem;}
+  .foot-bottom{
+    margin-top:52px; padding-top:24px; border-top:1px solid var(--line-dark);
+    display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px; font-size:0.82rem;
+  }
+  .foot-socials{display:flex; gap:16px;}
+
+/* ---------- mobile refinement ---------- */
+@media (max-width:859px){
+  .nav{
+    padding:12px 16px;
+    min-height:72px;
+  }
+
+  .brand{
+    gap:9px;
+    min-width:0;
+    flex:1;
+  }
+
+  .brand img{
+    width:38px !important;
+    height:38px !important;
+    flex-shrink:0;
+  }
+
+  .brand strong{
+    display:block;
+    font-size:1rem;
+    line-height:1.15;
+    white-space:nowrap;
+  }
+
+  .brand span{
+    display:block;
+    font-size:0.62rem;
+    line-height:1.2;
+    white-space:nowrap;
+  }
+
+  .menutoggle{
+    padding:7px 10px;
+    font-size:1.15rem;
+    line-height:1;
+    flex-shrink:0;
+  }
+
+  .navlinks{
+    padding:10px 16px 18px !important;
+  }
+
+  .navlinks a{
+    font-size:0.92rem;
+  }
+
+  .wrap{
+    padding-left:16px;
+    padding-right:16px;
+  }
+
+  section{
+    padding:46px 0;
+  }
+
+  .hero{
+    padding:64px 0 48px;
+  }
+
+  .hero h1{
+    font-size:clamp(2rem,9vw,2.75rem);
+    line-height:1.08;
+    margin-bottom:16px;
+  }
+
+  .hero p.lead{
+    font-size:1rem;
+    line-height:1.55;
+    margin-bottom:26px;
+  }
+
+  .hero-ctas{
+    gap:10px;
+    margin-bottom:38px;
+  }
+
+  .hero-ctas .btn{
+    padding:11px 18px;
+    font-size:0.84rem;
+  }
+
+  .stat-strip{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+  }
+
+  .stat{
+    margin:0;
+    padding:13px 12px 0 0;
+    border-right:1px solid var(--line-dark);
+    min-height:52px;
+    font-size:0.86rem;
+  }
+
+  .stat:nth-child(2n){
+    border-right:none;
+    padding-left:12px;
+  }
+
+  .sechead{
+    margin-bottom:30px;
+  }
+
+  .sechead h2{
+    font-size:1.65rem;
+    line-height:1.2;
+  }
+
+  .sechead p{
+    font-size:0.96rem;
+    line-height:1.55;
+  }
+
+  .about-grid{
+    gap:30px;
+  }
+
+  .about-lead{
+    padding-left:16px;
+  }
+
+  .about-lead p{
+    font-size:1rem;
+    line-height:1.6;
+  }
+
+  .vmv{
+    gap:20px;
+  }
+
+  .values-row{
+    gap:7px;
+  }
+
+  .value-chip{
+    padding:5px 11px;
+    font-size:0.78rem;
+  }
+
+  .wwd-item{
+    padding:20px 16px 20px 18px;
+  }
+
+  .lead-group-title{
+    margin-bottom:14px;
+  }
+
+  .lead-grid{
+    gap:18px;
+    margin-bottom:34px;
+  }
+
+  .lead-card{
+    gap:12px;
+    padding:12px;
+    border-radius:12px;
+  }
+
+  .lead-photo,
+  .lead-photo-ph{
+    height:205px;
+    border-radius:10px;
+  }
+
+  .lead-name{
+    font-size:1.05rem;
+  }
+
+  .lead-role{
+    font-size:0.86rem;
+    margin-bottom:6px;
+  }
+
+  .lead-bio{
+    font-size:0.86rem;
+    line-height:1.5;
+    margin-bottom:2px;
+  }
+
+  .program-tags{
+    gap:9px;
+  }
+
+  .program-tag{
+    padding:10px 15px;
+    font-size:0.82rem;
+  }
+
+  .program-flow{
+    margin-top:26px;
+    line-height:1.8;
+  }
+
+  .project-visual{
+    min-height:150px;
+    padding:16px;
+  }
+
+  .project-body{
+    padding:22px 18px;
+  }
+
+  .project-body h3{
+    font-size:1.3rem;
+  }
+
+  .project-meta{
+    gap:12px;
+    font-size:0.82rem;
+  }
+
+  .opp-listing{
+    padding:18px;
+    gap:16px;
+  }
+
+  .opp-listing h4{
+    font-size:1rem;
+  }
+
+  .opp-listing .meta{
+    font-size:0.82rem;
+    line-height:1.5;
+  }
+
+  .opp-listing .btn{
+    width:100%;
+    text-align:center;
+  }
+
+  .event-feature{
+    gap:0;
+  }
+
+  .date-badge{
+    width:100%;
+    min-width:0;
+    padding:14px 18px;
+  }
+
+  .date-badge .day{
+    font-size:1.7rem;
+    display:inline-block;
+    margin-right:6px;
+  }
+
+  .date-badge .mon{
+    display:inline-block;
+  }
+
+  .event-body{
+    padding:18px;
+    min-width:0;
+  }
+
+  .event-body h3{
+    font-size:1.2rem;
+  }
+
+  .event-body p{
+    font-size:0.9rem;
+  }
+
+  .news-body{
+    padding:22px 18px;
+  }
+
+  .news-body h3{
+    font-size:1.18rem;
+  }
+
+  .engage-grid{
+    gap:9px;
+    margin-bottom:34px;
+  }
+
+  .engage-btn{
+    padding:16px 12px;
+    font-size:0.84rem;
+  }
+
+  .form-panel{
+    padding:22px 16px;
+  }
+
+  .form-grid{
+    gap:15px;
+  }
+
+  .interests .opts{
+    gap:9px 14px;
+  }
+
+  .interests label{
+    font-size:0.82rem;
+  }
+
+  .form-submit .btn{
+    width:100%;
+  }
+
+  .support-grid{
+    gap:30px;
+  }
+
+  footer{
+    padding:46px 0 24px;
+  }
+
+  .foot-grid{
+    gap:30px;
+  }
+
+  .foot-bottom{
+    margin-top:34px;
+    padding-top:18px;
+    flex-direction:column;
+    gap:7px;
+  }
+}
+
+@media (max-width:380px){
+  .brand strong{
+    font-size:0.92rem;
+  }
+
+  .brand span{
+    font-size:0.56rem;
+  }
+
+  .lead-photo,
+  .lead-photo-ph{
+    height:185px;
+  }
+
+  .engage-btn{
+    font-size:0.78rem;
+    padding:14px 9px;
+  }
+}
+
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <div class="brand">
+      <img src="Logo.jpg" alt="Yimbo Youth Forum logo" style="width:44px;height:44px;border-radius:50%;object-fit:cover;">
+      <div>
+        <strong>Yimbo Youth Forum</strong>
+        <span>Unity • Empowerment • Development</span>
+      </div>
+    </div>
+    <button class="menutoggle" id="menuToggle" aria-label="Toggle menu">☰</button>
+    <nav class="navlinks" id="navLinks">
+      <a href="#about">About</a>
+      <a href="#programs">Programs</a>
+      <a href="#projects">Projects</a>
+      <a href="#opportunities">Opportunities</a>
+      <a href="#events">Events</a>
+      <a href="#news">Media</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a class="btn btn-gold navcta" href="https://chat.whatsapp.com/Ki9OpDqWkuHCKbIaPSWxnq?s=cl&p=a&mlu=4&ilr=4" target="_blank">Join Us</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-inner">
+    <p class="eyebrow">United for opportunities, empowerment & community development</p>
+    <h1>Empowering the youth.<br><span class="accent">Transforming Yimbo.</span></h1>
+    <p class="lead">Bringing together the young people of Yimbo to create opportunities, nurture talents, strengthen leadership, and contribute to meaningful community development.</p>
+    <div class="hero-ctas">
+      <a class="btn btn-gold" href="https://chat.whatsapp.com/Ki9OpDqWkuHCKbIaPSWxnq?s=cl&p=a&mlu=4&ilr=4" target="_blank">Join the forum</a>
+      <a class="btn btn-outline" href="#programs">Explore our programs</a>
+    </div>
+    <div class="stat-strip">
+      <div class="stat">Youth Empowerment</div>
+      <div class="stat">Opportunities</div>
+      <div class="stat">Leadership</div>
+      <div class="stat" style="border-right:none;">Community Development</div>
+    </div>
+  </div>
+</section>
+<div class="divider"></div>
+
+<section id="about">
+  <div class="wrap">
+    <div class="sechead">
+      <p class="kicker">About us</p>
+      <h2>A common space for Yimbo's young people to grow</h2>
+    </div>
+    <div class="about-grid">
+      <div class="about-lead">
+        <p>Yimbo Youth Forum is a platform created to unite young people in Yimbo and provide a common space where they can grow, support one another, access opportunities, develop their talents, and participate meaningfully in community development.</p>
+      </div>
+      <div class="vmv">
+        <div class="vmv-item">
+          <h4>Our vision</h4>
+          <p>A united, empowered, informed and prosperous youth community actively contributing to the development of Yimbo and beyond.</p>
+        </div>
+        <div class="vmv-item">
+          <h4>Our mission</h4>
+          <p>To empower and unite the youth of Yimbo through opportunities, skills development, networking, leadership, entrepreneurship, talent development and community engagement.</p>
+        </div>
+        <div class="vmv-item">
+          <h4>Our values</h4>
+          <div class="values-row">
+            <span class="value-chip">Unity</span>
+            <span class="value-chip">Integrity</span>
+            <span class="value-chip">Accountability</span>
+            <span class="value-chip">Inclusivity</span>
+            <span class="value-chip">Innovation</span>
+            <span class="value-chip">Leadership</span>
+            <span class="value-chip">Service</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="whatwedo">
+  <div class="wrap">
+    <div class="sechead on-dark">
+      <p class="kicker">What we do</p>
+      <h2>Eight ways we work alongside Yimbo's youth</h2>
+    </div>
+  </div>
+  <div class="wwd-list">
+    <div class="wwd-item"><h4>Youth empowerment</h4><p>Creating opportunities for young people to become self-reliant and productive.</p></div>
+    <div class="wwd-item"><h4>Employment & opportunities</h4><p>Jobs, tenders, scholarships, internships, grants and training opportunities.</p></div>
+    <div class="wwd-item"><h4>Entrepreneurship</h4><p>Promoting entrepreneurship, innovation and business development.</p></div>
+    <div class="wwd-item"><h4>Talent development</h4><p>Sports, arts, creativity, technology and other talents.</p></div>
+    <div class="wwd-item"><h4>Education & training</h4><p>Mentorship, training, capacity building and professional development.</p></div>
+    <div class="wwd-item"><h4>Leadership & civic participation</h4><p>Encouraging youth participation in leadership and decision-making.</p></div>
+    <div class="wwd-item"><h4>Community development</h4><p>Mobilising youth for meaningful community projects.</p></div>
+    <div class="wwd-item"><h4>Networking & partnerships</h4><p>Connecting youth with organisations, institutions, leaders and development partners.</p></div>
+  </div>
+</section>
+<div class="divider"></div>
+
+<section id="leadership">
+  <div class="wrap">
+    <div class="sechead">
+      <p class="kicker">Leadership</p>
+      <h2>The people steering the forum</h2>
+    </div>
+
+    <p class="lead-group-title">Executive leadership</p>
+    <div class="lead-grid">
+
+      <div class="lead-card">
+        <img class="lead-photo" src="fidel1.jpeg" alt="Fidel Castro">
+          <div class="lead-name">Fidel Castro</div>
+          <div class="lead-role">Chairperson</div>
+          <p class="lead-bio">Provides visionary strategic direction, institutional governance, and high-level representation. Champions programs expanding education, entrepreneurship, and leadership for youth across the region.</p>
+        </div>
+      </div>
+
+      <div class="lead-card">
+        <img class="lead-photo" src="cathy.jpeg" alt="Catherine Owino">
+          <div class="lead-name">Catherine Owino</div>
+          <div class="lead-role">Vice Chairperson</div>
+          <p class="lead-bio">Supports the executive office by overseeing internal committee harmonization, program implementation oversight, and stakeholder relations with a focus on inclusivity and gender equity.</p>
+        </div>
+      </div>
+
+      <div class="lead-card">
+        <img class="lead-photo" src="mike2.jpeg" alt="Mike Arsen">
+          <div class="lead-name">Mike Arsen</div>
+          <div class="lead-role">Secretary General</div>
+          <p class="lead-bio">Manages the central secretariat, overseeing official correspondence, documentation, institutional communication records, and general administrative coordination.</p>
+        </div>
+      </div>
+
+      <div class="lead-card">
+        <img class="lead-photo" src="welly.png" alt="Wellingtone Onyango">
+          <div class="lead-name">Wellingtone Onyango</div>
+          <div class="lead-role">Executive Secretary</div>
+          <p class="lead-bio">Streamlines day-to-day administrative workflows, manages schedules, and facilitates operational communication between executive officers, regional leaders, and stakeholders.</p>
+        </div>
+      </div>
+
+      <div class="lead-card">
+        <img class="lead-photo" src="elisha.jpeg" alt="Elisha Owino">
+          <div class="lead-name">Elisha Owino</div>
+          <div class="lead-role">Director of Finance & Treasury</div>
+          <p class="lead-bio">Oversees financial health, budgeting, resource mobilization, and transparent accounting practices for organizational funds and community projects.</p>
+        </div>
+      </div>
+
+      <div class="lead-card">
+        <img class="lead-photo" src="sauti.png" alt="Ohindo SuperB">
+          <div class="lead-name">Ohindo SuperB</div>
+          <div class="lead-role">Director of Logistics & Mobilization</div>
+          <p class="lead-bio">Coordinates grassroots mobilization, event organization, transport logistics, and field operations for community forums and public drives.</p>
+        </div>
+      </div>
+
+      <div class="lead-card">
+        <img class="lead-photo" src="manu.jpeg" alt="Emmanuel Msitwa">
+          <div class="lead-name">Emmanuel Msitwa</div>
+          <div class="lead-role">Director of ICT, Media & PR</div>
+          <p class="lead-bio">Manages technological infrastructure, digital platforms, media presence, online engagement, and public relations campaigns.</p>
+        </div>
+      </div>
+
+      <div class="lead-card">
+        <img class="lead-photo" src="bilex.png" alt="Billy Billex">
+          <div class="lead-name">Billy Billex</div>
+          <div class="lead-role">Chief Project Coordinator</div>
+          <p class="lead-bio">Oversees the design, implementation, monitoring, and evaluation of all organizational projects to ensure they deliver measurable impact.</p>
+        </div>
+      </div>
+
+      <div class="lead-card">
+        <img class="lead-photo" src="aloyce.jpeg" alt="Aloyce Mugah">
+          <div class="lead-name">Aloyce Mugah</div>
+          <div class="lead-role">Director of International & Diaspora Affairs</div>
+          <p class="lead-bio">Builds external networks, connects with international partners, and engages the Yimbo diaspora community to channel support and mentorship back home.</p>
+        </div>
+      </div>
+     </div>
+
+    <p class="lead-group-title">Regional leadership</p>
+    <div class="lead-grid">
+      
+      <div class="lead-card">
+        <img class="lead-photo" src="stakus.jpeg" alt="Stakus  Nuani">
+          <div class="lead-name">Stakus Nuani</div>
+          <div class="lead-role">Regional Lead — East</div>
+          <p class="lead-bio">Serves as the primary liaison between grassroots members in East wards and the central executive body, ensuring equitable distribution of opportunities.</p>
+        </div>
+      </div>
+  
+      <div class="lead-card">
+        <div class="lead-photo-ph" style="background:#4C6580;">ON</div>
+        <div>
+          <div class="lead-name">Oliver Ndwala</div>
+          <div class="lead-role">Regional Lead — West</div>
+          <p class="lead-bio">Mobilizes community members across West wards, coordinates local initiatives, and feeds grassroots feedback into strategic planning cycles.</p>
+        </div>
+      </div>
+    </div>
+
+    <p class="lead-group-title">Advisory board</p>
+    <div class="lead-grid">
+      
+      <div class="lead-card">
+        <img class="lead-photo" src="sam1.jpeg" alt="Samson Ojwang">
+          <div class="lead-name">Samson Ojwang</div>
+          <div class="lead-role">Senior Advisory Board</div>
+          <p class="lead-bio">Offers high-level mentorship, strategic counsel, and institutional oversight to guide the organization's long-term vision and governance standards.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section id="programs">
+  <div class="wrap">
+    <div class="sechead">
+      <p class="kicker">Programs</p>
+      <h2>Where our energy goes</h2>
+      <p>Every program follows the same path: what we do, who benefits, the activities involved, the results so far, and how to get involved.</p>
+    </div>
+    <div class="program-tags">
+      <span class="program-tag">Youth Empowerment</span>
+      <span class="program-tag">Education & Training</span>
+      <span class="program-tag">Entrepreneurship</span>
+      <span class="program-tag">Talent Development</span>
+      <span class="program-tag">Leadership Development</span>
+      <span class="program-tag">Community Action</span>
+      <span class="program-tag">Environmental Sustainability</span>
+      <span class="program-tag">Gender & Inclusivity</span>
+    </div>
+    <div class="program-flow">
+      <span>What we do</span><span class="arrow">/</span>
+      <span>Who benefits</span><span class="arrow">/</span>
+      <span>Activities</span><span class="arrow">/</span>
+      <span>Results</span><span class="arrow">/</span>
+      <span>Get involved</span>
+    </div>
+  </div>
+</section>
+<div class="divider"></div>
+
+<section id="projects">
+  <div class="wrap">
+    <div class="sechead on-dark">
+      <p class="kicker">Projects</p>
+      <h2>Featured project</h2>
+    </div>
+    <div class="project-feature">
+      <div class="project-visual"><span class="status-pill">🟢 Ongoing</span></div>
+      <div class="project-body">
+        <h3>Community Green Tech & Youth Hub</h3>
+        <div class="project-meta">
+          <span>📍 Yimbo</span>
+          <span>Status: Ongoing</span>
+        </div>
+        <p class="desc">Empowering youth through practical digital training and sustainable agriculture solutions.</p>
+        <a class="btn btn-outline" href="#contact">View project</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="opportunities">
+  <div class="wrap">
+    <div class="sechead">
+      <p class="kicker">Opportunities</p>
+      <h2>Jobs, grants, and training worth knowing about</h2>
+    </div>
+    <div class="opp-cats">
+      <span class="opp-cat">Jobs</span>
+      <span class="opp-cat">Internships</span>
+      <span class="opp-cat">Scholarships</span>
+      <span class="opp-cat">Tenders</span>
+      <span class="opp-cat">Grants</span>
+      <span class="opp-cat">Training</span>
+      <span class="opp-cat">Fellowships</span>
+      <span class="opp-cat">Business opportunities</span>
+      <span class="opp-cat">Volunteer opportunities</span>
+    </div>
+    <div class="opp-listing">
+      <div>
+        <h4>Youth Entrepreneurship & Innovation Training</h4>
+        <div class="meta">Deadline: 30 September 2026 · Eligibility: Young people in Yimbo</div>
+      </div>
+      <a class="btn btn-outline-dark" href="#contact">View & apply</a>
+    </div>
+  </div>
+</section>
+
+<section id="events">
+  <div class="wrap">
+    <div class="sechead">
+      <p class="kicker">Events</p>
+      <h2>Upcoming gathering</h2>
+    </div>
+    <div class="event-feature">
+      <div class="date-badge"><div class="day">15</div><div class="mon">OCT 2026</div></div>
+      <div class="event-body">
+        <h3>Youth Empowerment Forum 2026</h3>
+        <div class="event-meta">⏰ 9:00 AM EAT · 📍 Yimbo Community Hall</div>
+        <p>A major regional gathering focusing on digital skills, funding opportunities, and youth leadership training.</p>
+        <a class="btn btn-gold" href="#contact">Register</a>
+      </div>
+    </div>
+    <p class="past-note">Past events are archived with photo galleries and full post-event impact reports.</p>
+  </div>
+</section>
+<div class="divider"></div>
+
+<section id="news">
+  <div class="wrap">
+    <div class="sechead">
+      <p class="kicker">News & announcements</p>
+      <h2>Latest from the forum</h2>
+    </div>
+    <div class="news-feature">
+      <div class="news-visual"></div>
+      <div class="news-body">
+        <p class="news-date">September 2026</p>
+        <h3>Yimbo Youth Forum launches new youth empowerment initiative</h3>
+        <a class="read-more" href="#contact">Read more →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="involved">
+  <div class="wrap">
+    <div class="sechead on-dark">
+      <p class="kicker">Get involved</p>
+      <h2>There's a place for you here</h2>
+    </div>
+    <div class="engage-grid">
+      <a class="engage-btn" href="https://chat.whatsapp.com/Ki9OpDqWkuHCKbIaPSWxnq?s=cl&p=a&mlu=4&ilr=4" target="_blank">Become a member</a>
+      <a class="engage-btn" href="#contact">Volunteer with us</a>
+      <a class="engage-btn" href="#contact">Become a partner</a>
+      <a class="engage-btn" href="#support">Support our work</a>
+    </div>
+
+    <div class="form-panel">
+      <h3>Membership application</h3>
+      <p>Tell us a bit about yourself — we'll follow up over WhatsApp or email.</p>
+      <form id="memberForm">
+        <div class="form-grid">
+          <div class="field"><label>Full name</label><input type="text" placeholder="Jane Achieng" required></div>
+          <div class="field"><label>Date of birth / age</label><input type="text" placeholder="e.g. 24"></div>
+          <div class="field"><label>Gender</label><input type="text" placeholder="Gender"></div>
+          <div class="field"><label>Phone number (M-PESA enabled)</label><input type="tel" placeholder="07XX XXX XXX"></div>
+          <div class="field"><label>Email</label><input type="email" placeholder="you@email.com"></div>
+          <div class="field"><label>Location / Ward</label><input type="text" placeholder="Ward"></div>
+          <div class="field"><label>Education</label><input type="text" placeholder="Highest level completed"></div>
+          <div class="field"><label>Occupation</label><input type="text" placeholder="Current occupation"></div>
+          <div class="field" style="grid-column:1/-1;"><label>Skills</label><input type="text" placeholder="e.g. graphic design, farming, coding"></div>
+          <div class="field interests">
+            <label>Areas of interest</label>
+            <div class="opts">
+              <label><input type="checkbox"> Entrepreneurship</label>
+              <label><input type="checkbox"> Education</label>
+              <label><input type="checkbox"> Sports</label>
+              <label><input type="checkbox"> Leadership</label>
+              <label><input type="checkbox"> Technology</label>
+              <label><input type="checkbox"> Arts</label>
+              <label><input type="checkbox"> Community Development</label>
+            </div>
+          </div>
+          <div class="form-submit">
+            <button type="submit" class="btn btn-gold">Submit application</button>
+            <p id="formMsg">✅ Application received successfully.</p>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<section id="support">
+  <div class="wrap">
+    <div class="sechead">
+      <p class="kicker">Support & partners</p>
+      <h2>Fuel the work of Yimbo's youth</h2>
+    </div>
+    <div class="support-grid">
+      <div>
+        <h3>Donate</h3>
+        <p>Secure contribution options via M-PESA, bank transfer, and digital payment channels to support youth initiatives in Yimbo.</p>
+        <a class="btn btn-outline-dark" href="#contact" style="margin-top:18px;">Support / donate</a>
+      </div>
+      <div>
+        <h3>Partnership tiers</h3>
+        <div class="tier-list">
+          <div>Development Partners</div>
+          <div>Community Partners</div>
+          <div>Corporate Partners</div>
+          <div>Sponsors</div>
+          <div>Government & Institutional Partners</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <strong>Yimbo Youth Forum</strong>
+        <p>United for opportunities, empowerment and community development — based in Yimbo, Siaya County, Kenya.</p>
+        <div class="foot-socials" style="margin-top:18px;">
+          <a href="#">Facebook</a><a href="#">Instagram</a><a href="#">TikTok</a><a href="#">X</a><a href="#">YouTube</a>
+        </div>
+      </div>
+      <div>
+        <h5>Contact</h5>
+        <ul>
+          <li>📍 Yimbo, Siaya County, Kenya</li>
+          <li>📞 +254 707 514 622</li>
+          <li>📧 yimboyouthforum@gmail.com</li>
+          <li><a href="https://chat.whatsapp.com/Ki9OpDqWkuHCKbIaPSWxnq?s=cl&p=a&mlu=4&ilr=4" target="_blank">Join official WhatsApp chat</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Policies</h5>
+        <ul>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Use</a></li>
+          <li><a href="#">Code of Conduct</a></li>
+          <li><a href="#">Safeguarding Policy</a></li>
+          <li><a href="#">Anti-Harassment Policy</a></li>
+          <li><a href="#">Data Protection Policy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Yimbo Youth Forum. All rights reserved.</span>
+      <span>Unity • Empowerment • Development</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('menuToggle').addEventListener('click', function(){
+    document.getElementById('navLinks').classList.toggle('open');
+  });
+  document.querySelectorAll('.navlinks a').forEach(function(a){
+    a.addEventListener('click', function(){ document.getElementById('navLinks').classList.remove('open'); });
+  });
+  document.getElementById('memberForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    document.getElementById('formMsg').style.display = 'block';
+    this.reset();
+  });
+</script>
+
+</body>
+  </html>
